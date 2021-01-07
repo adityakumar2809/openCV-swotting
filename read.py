@@ -1,4 +1,5 @@
 import cv2
+import rescale
 
 
 def readImage():
@@ -26,18 +27,10 @@ def readVideo():
     cv2.destroyAllWindows()
 
 
-def resizeFrame(frame, scale=0.75):
-    width = int(frame.shape[1] * scale)
-    height = int(frame.shape[0] * scale)
-    dimensions = (width, height)
-
-    return cv2.resize(frame, dimensions, interpolation=cv2.INTER_AREA)
-
-
 def readAndResizeImage():
     image = cv2.imread('images/image2.jfif')
     cv2.imshow('Original', image)
-    image = resizeFrame(image, 0.5)
+    image = rescale.resizeFrame(image, 0.5)
     cv2.imshow('Resized', image)
     cv2.waitKey(0)
 
@@ -48,7 +41,7 @@ def readAndResizeVideo():
         isSuccessfullyRead, frame = capture.read()
 
         if isSuccessfullyRead:
-            frame = resizeFrame(frame, 0.5)
+            frame = rescale.resizeFrame(frame, 0.5)
             cv2.imshow('VideoScreen', frame)
         else:
             break
@@ -58,13 +51,6 @@ def readAndResizeVideo():
 
     capture.release()
     cv2.destroyAllWindows()
-
-
-def changeResolution(capture, width, height):
-    """Used for configuring capture object; Works for Live Videos only"""
-    capture.set(3, width)
-    capture.set(4, height)
-    return capture
 
 
 def main():
