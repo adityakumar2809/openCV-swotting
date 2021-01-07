@@ -42,8 +42,27 @@ def readAndResizeImage():
     cv2.waitKey(0)
 
 
+def readAndResizeVideo():
+    capture = cv2.VideoCapture('videos/video1.mov')
+    while True:
+        isSuccessfullyRead, frame = capture.read()
+
+        if isSuccessfullyRead:
+            frame = resizeFrame(frame, 0.5)
+            cv2.imshow('VideoScreen', frame)
+        else:
+            break
+
+        if cv2.waitKey(20) and 0xFF == ord('d'):
+            break
+
+    capture.release()
+    cv2.destroyAllWindows()
+
+
 def main():
-    readAndResizeImage()
+    readAndResizeVideo()
+    # readAndResizeImage()
     # readVideo()
     # readImage()
 
