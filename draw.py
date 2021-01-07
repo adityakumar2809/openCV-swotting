@@ -51,8 +51,22 @@ def drawCircle():
     cv2.waitKey(0)
 
 
+def drawLine():
+    canvas = createBlankImage()
+    cv2.line(
+        img=canvas,
+        pt1=(125, 125),
+        pt2=(375, 375),
+        color=(0, 0, 255),
+        thickness=5
+    )
+    cv2.imshow('LineScreen', canvas)
+    cv2.waitKey(0)
+
+
 def main():
-    drawCircle()
+    drawLine()
+    # drawCircle()
     # drawRectangle()
     # paintImage()
 
