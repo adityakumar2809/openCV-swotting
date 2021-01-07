@@ -67,7 +67,7 @@ def erodeImage():
         iterations=5
     )
     cv2.imshow('DilatedImage', img)
-    
+
     img = cv2.erode(
         src=img,
         kernel=(7, 7),
