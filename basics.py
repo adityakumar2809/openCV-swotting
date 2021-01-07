@@ -77,8 +77,16 @@ def erodeImage():
     cv2.waitKey(0)
 
 
+def cropImage():
+    img = cv2.imread('images/image2.jfif')
+    img = img[50:200, 120:250]
+    cv2.imshow('CroppedImage', img)
+    cv2.waitKey(0)
+
+
 def main():
-    erodeImage()
+    cropImage()
+    # erodeImage()
     # dilateImage()
     # performEdgeCascade()
     # blurImage()
