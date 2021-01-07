@@ -23,8 +23,21 @@ def blurImage():
     cv2.waitKey(0)
 
 
+def performEdgeCascade():
+    img = cv2.imread('images/image2.jfif')
+    img = cv2.Canny(
+        image=img,
+        threshold1=125,
+        threshold2=175
+    )
+    # PASS IN BLURRED IMAGES TO REDUCE THE EDGES IN THE FINAL OUTPUT
+    cv2.imshow('EdgeCascadeImage', img)
+    cv2.waitKey(0)
+
+
 def main():
-    blurImage()
+    performEdgeCascade()
+    # blurImage()
     # convertToGrayScale()
 
 
