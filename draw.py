@@ -27,6 +27,14 @@ def drawRectangle():
         thickness=5
     )
     cv2.imshow('RectangleScreen', blank_image)
+    cv2.rectangle(
+        img=blank_image,
+        pt1=(125, 125),
+        pt2=(375, 375),
+        color=(255, 0, 255),
+        thickness=cv2.FILLED
+    )
+    cv2.imshow('RectangleFilledScreen', blank_image)
     cv2.waitKey(0)
 
 
