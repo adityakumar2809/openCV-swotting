@@ -60,6 +60,13 @@ def readAndResizeVideo():
     cv2.destroyAllWindows()
 
 
+def changeResolution(capture, width, height):
+    """Used for configuring capture object; Works for Live Videos only"""
+    capture.set(3, width)
+    capture.set(4, height)
+    return capture
+
+
 def main():
     readAndResizeVideo()
     # readAndResizeImage()
