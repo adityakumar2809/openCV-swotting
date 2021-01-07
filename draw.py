@@ -17,8 +17,22 @@ def paintImage(color=(0, 255, 0)):
     cv2.waitKey(0)
 
 
+def drawRectangle():
+    blank_image = createBlankImage()
+    cv2.rectangle(
+        img=blank_image,
+        pt1=(125, 125),
+        pt2=(375, 375),
+        color=(255, 0, 255),
+        thickness=5
+    )
+    cv2.imshow('RectangleScreen', blank_image)
+    cv2.waitKey(0)
+
+
 def main():
-    paintImage()
+    drawRectangle()
+    # paintImage()
 
 
 if __name__ == "__main__":
