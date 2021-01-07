@@ -8,12 +8,16 @@ def readImage():
 
 
 def readVideo():
-    # VIDEOCAPTURE TAKES EITHER FILEPATH AS ARGUMENT OR AN INTEGER DENOTING 
+    # VIDEOCAPTURE TAKES EITHER FILEPATH AS ARGUMENT OR AN INTEGER DENOTING
     # CAMERAS WHERE 0 IS USUALLY THE WEBCAM
     capture = cv2.VideoCapture('videos/video1.mov')
     while True:
         isSuccessfullyRead, frame = capture.read()
-        cv2.imshow('VideoScreen', frame)
+
+        if isSuccessfullyRead:
+            cv2.imshow('VideoScreen', frame)
+        else:
+            break
 
         if cv2.waitKey(20) and 0xFF == ord('d'):
             break
@@ -21,8 +25,10 @@ def readVideo():
     capture.release()
     cv2.destroyAllWindows()
 
+
 def main():
-    readImage()
+    readVideo()
+    # readImage()
 
 
 if __name__ == "__main__":
