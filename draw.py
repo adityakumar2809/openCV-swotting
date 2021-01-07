@@ -8,38 +8,52 @@ def createBlankImage(size=(500, 500, 3)):
 
 
 def paintImage(color=(0, 255, 0)):
-    blank_image_full = createBlankImage()
-    blank_image_partial = createBlankImage()
-    blank_image_full[:] = color
-    blank_image_partial[200:300, 300:400] = color
-    cv2.imshow('FullPaintedScreen', blank_image_full)
-    cv2.imshow('PartialPaintedScreen', blank_image_partial)
+    canvas_full = createBlankImage()
+    canvas_partial = createBlankImage()
+    canvas_full[:] = color
+    canvas_partial[200:300, 300:400] = color
+    cv2.imshow('FullPaintedScreen', canvas_full)
+    cv2.imshow('PartialPaintedScreen', canvas_partial)
     cv2.waitKey(0)
 
 
 def drawRectangle():
-    blank_image = createBlankImage()
+    canvas = createBlankImage()
     cv2.rectangle(
-        img=blank_image,
+        img=canvas,
         pt1=(125, 125),
         pt2=(375, 375),
         color=(255, 0, 255),
         thickness=5
     )
-    cv2.imshow('RectangleScreen', blank_image)
+    cv2.imshow('RectangleScreen', canvas)
     cv2.rectangle(
-        img=blank_image,
+        img=canvas,
         pt1=(125, 125),
         pt2=(375, 375),
         color=(255, 0, 255),
         thickness=cv2.FILLED
     )
-    cv2.imshow('RectangleFilledScreen', blank_image)
+    cv2.imshow('RectangleFilledScreen', canvas)
+    cv2.waitKey(0)
+
+
+def drawCircle():
+    canvas = createBlankImage()
+    cv2.circle(
+        img=canvas,
+        center=(250, 250),
+        radius=100,
+        color=(255, 0, 255),
+        thickness=5
+    )
+    cv2.imshow('CircleScreen', canvas)
     cv2.waitKey(0)
 
 
 def main():
-    drawRectangle()
+    drawCircle()
+    # drawRectangle()
     # paintImage()
 
 
