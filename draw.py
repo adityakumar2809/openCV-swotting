@@ -64,8 +64,24 @@ def drawLine():
     cv2.waitKey(0)
 
 
+def writeText():
+    canvas = createBlankImage()
+    cv2.putText(
+        img=canvas,
+        text='Hello World!',
+        org=(100, 100),
+        fontFace=cv2.FONT_HERSHEY_COMPLEX,
+        fontScale=1.0,
+        color=(255, 0, 0),
+        thickness=2
+    )
+    cv2.imshow('TextScreen', canvas)
+    cv2.waitKey(0)
+
+
 def main():
-    drawLine()
+    writeText()
+    # drawLine()
     # drawCircle()
     # drawRectangle()
     # paintImage()
