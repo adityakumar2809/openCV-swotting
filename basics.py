@@ -35,8 +35,26 @@ def performEdgeCascade():
     cv2.waitKey(0)
 
 
+def dilateImage():
+    img = cv2.imread('images/image2.jfif')
+    img = cv2.Canny(
+        image=img,
+        threshold1=125,
+        threshold2=175
+    )
+    cv2.imshow('EdgeCascadeImage', img)
+    img = cv2.dilate(
+        src=img,
+        kernel=(7, 7),
+        iterations=5
+    )
+    cv2.imshow('DilatedImage', img)
+    cv2.waitKey(0)
+
+
 def main():
-    performEdgeCascade()
+    dilateImage()
+    # performEdgeCascade()
     # blurImage()
     # convertToGrayScale()
 
