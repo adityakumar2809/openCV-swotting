@@ -8,9 +8,12 @@ def createBlankImage(size=(500, 500, 3)):
 
 
 def paintImage(color=(0, 255, 0)):
-    blank_image = createBlankImage()
-    blank_image[:] = color
-    cv2.imshow('PaintedScreen', blank_image)
+    blank_image_full = createBlankImage()
+    blank_image_partial = createBlankImage()
+    blank_image_full[:] = color
+    blank_image_partial[200:300, 300:400] = color
+    cv2.imshow('FullPaintedScreen', blank_image_full)
+    cv2.imshow('PartialPaintedScreen', blank_image_partial)
     cv2.waitKey(0)
 
 
