@@ -45,8 +45,19 @@ def rotateImage(angle, rotation_point=None):
     return rotated_image
 
 
+def flipImage():
+    img = getImage()
+    flipped_img = cv2.flip(
+        src=img,
+        flipCode=0
+    )
+    # flipcode can be 1, 0, -1 to flip image vertically, horizontally or both
+    return flipped_img
+
+
 def main():
-    img = rotateImage(45)
+    img = flipImage()
+    # img = rotateImage(45)
     # img = translateImage(20, 50)
     cv2.imshow('Result', img)
     cv2.waitKey(0)
