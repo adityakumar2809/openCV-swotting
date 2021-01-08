@@ -39,7 +39,7 @@ def main():
     gray_img = convertToGrayscale(img)
     cv2.imshow('Grayscale', gray_img)
 
-    canny_img = getEdges(img)
+    canny_img = getEdges(gray_img)
     cv2.imshow('Canny', canny_img)
 
     contours, hierarchies = getContours(canny=canny_img)
