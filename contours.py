@@ -14,6 +14,15 @@ def convertToGrayscale(img):
     )
 
 
+def getThresholdedImage(img):
+    return cv2.threshold(
+        src=img,
+        thresh=125,
+        maxval=255,
+        type=cv2.THRESH_BINARY
+    )
+
+
 def getEdges(img):
     canny = cv2.Canny(
         image=img,
@@ -39,7 +48,10 @@ def main():
     gray_img = convertToGrayscale(img)
     cv2.imshow('Grayscale', gray_img)
 
-    canny_img = getEdges(gray_img)
+    ret, thresh_img = getThresholdedImage(gray_img)
+    cv2.imshow('Threshold', thresh_img)
+
+    canny_img = getEdges(thresh_img)
     cv2.imshow('Canny', canny_img)
 
     contours, hierarchies = getContours(canny=canny_img)
