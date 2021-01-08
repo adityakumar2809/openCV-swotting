@@ -7,9 +7,20 @@ def getImage():
     return img
 
 
+def convertToGrayscale(img):
+    return cv2.cvtColor(
+        src=img,
+        code=cv2.COLOR_BGR2GRAY
+    )
+
+
 def main():
     img = getImage()
-    cv2.imshow('Result', img)
+    cv2.imshow('Initial', img)
+
+    gray_img = convertToGrayscale(img)
+    cv2.imshow('Grayscale', gray_img)
+
     cv2.waitKey(0)
 
 
