@@ -14,12 +14,24 @@ def convertToGrayscale(img):
     )
 
 
+def getContours(img):
+    canny = cv2.Canny(
+        image=img,
+        threshold1=125,
+        threshold2=175
+    )
+    return canny
+
+
 def main():
     img = getImage()
     cv2.imshow('Initial', img)
 
     gray_img = convertToGrayscale(img)
     cv2.imshow('Grayscale', gray_img)
+
+    canny_img = getContours(img)
+    cv2.imshow('Canny', canny_img)
 
     cv2.waitKey(0)
 
