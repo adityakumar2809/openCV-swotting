@@ -2,6 +2,13 @@ import cv2
 import numpy as np
 
 
+def getBlank(img):
+    return np.zeros(
+        shape=img.shape,
+        dtype='uint8'
+    )
+
+
 def getImage():
     img = cv2.imread('images/image4.jfif')
     return img
@@ -41,6 +48,16 @@ def getContours(canny):
     return contours, hierarchies
 
 
+def drawContours(blank_image, contours):
+    return cv2.drawContours(
+        image=blank_image,
+        contours=contours,
+        contourIdx=-1,
+        color=(0, 0, 255),
+        thickness=3
+    )
+
+
 def main():
     img = getImage()
     cv2.imshow('Initial', img)
@@ -56,6 +73,10 @@ def main():
 
     contours, hierarchies = getContours(canny=canny_img)
     print(f'Found {len(contours)} coutours.')
+
+    blank_image = getBlank(img)
+    image_contours = drawContours(blank_image, contours)
+    cv2.imshow('Contours', image_contours)
 
     cv2.waitKey(0)
 
