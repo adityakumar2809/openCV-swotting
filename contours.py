@@ -23,6 +23,15 @@ def getEdges(img):
     return canny
 
 
+def getContours(canny):
+    contours, hierarchies = cv2.findContours(
+        image=canny,
+        mode=cv2.RETR_LIST,
+        method=cv2.CHAIN_APPROX_NONE
+    )
+    return contours, hierarchies
+
+
 def main():
     img = getImage()
     cv2.imshow('Initial', img)
@@ -32,6 +41,9 @@ def main():
 
     canny_img = getEdges(img)
     cv2.imshow('Canny', canny_img)
+
+    contours, hierarchies = getContours(canny=canny_img)
+    print(f'Found {len(contours)} coutours.')
 
     cv2.waitKey(0)
 
