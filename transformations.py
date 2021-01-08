@@ -24,8 +24,30 @@ def translateImage(x, y):
     # y --> Down Translation
 
 
+def rotateImage(angle, rotation_point=None):
+    img = getImage()
+    (height, width) = img.shape[:2]
+
+    if rotation_point is None:
+        rotation_point = (width//2, height//2)
+
+    rotation_matrix = cv2.getRotationMatrix2D(
+        center=rotation_point,
+        angle=angle,
+        scale=1.0
+    )
+    dimensions = (width, height)
+    rotated_image = cv2.warpAffine(
+        src=img,
+        M=rotation_matrix,
+        dsize=dimensions
+    )
+    return rotated_image
+
+
 def main():
-    img = translateImage(20, 50)
+    img = rotateImage(45)
+    # img = translateImage(20, 50)
     cv2.imshow('Result', img)
     cv2.waitKey(0)
 
