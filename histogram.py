@@ -36,6 +36,15 @@ def getCircleMask(img, mask):
     return circle_mask
 
 
+def getMaskedImage(img, mask):
+    masked_image = cv2.bitwise_and(
+        src1=img,
+        src2=img,
+        mask=mask
+    )
+    return masked_image
+
+
 def convertBGRToGrayscale(img):
     gray_image = cv2.cvtColor(
         src=img,
@@ -88,11 +97,13 @@ def main():
 
     mask = getMask(gray_image)
     showImage(mask)
-    circular_mask = getCircleMask(gray_image, mask)
-    showImage(circular_mask)
+    circle_mask = getCircleMask(gray_image, mask)
+    showImage(circle_mask)
+    masked_image = getMaskedImage(gray_image, circle_mask)
+    showImage(masked_image)
     gray_mask_histogram = calculateGrayMaskedHistogram(
-        gray_image,
-        circular_mask
+        masked_image,
+        circle_mask
     )
     showGrayHistogram(gray_mask_histogram)
 
