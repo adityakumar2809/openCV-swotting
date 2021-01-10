@@ -41,6 +41,14 @@ def drawCircle(img):
     return circle
 
 
+def bitwiseAnd(img1, img2):
+    bitwise_and_image = cv2.bitwise_and(
+        src1=img1,
+        src2=img2
+    )
+    return bitwise_and_image
+
+
 def main():
     blank = getBlank()
     showImage(blank)
@@ -50,6 +58,9 @@ def main():
 
     circle = drawCircle(blank.copy())
     showImage(circle)
+
+    bitwise_and_image = bitwiseAnd(rectangle, circle)
+    showImage(bitwise_and_image)
 
     cv2.waitKey(0)
 
