@@ -23,12 +23,23 @@ def convertBGRToGrayscale(img):
     return gray_image
 
 
+def convertBGRToHSV(img):
+    hsv_image = cv2.cvtColor(
+        src=img,
+        code=cv2.COLOR_BGR2HSV
+    )
+    return hsv_image
+
+
 def main():
     img = getImage()
     showImage(img)
 
     gray_image = convertBGRToGrayscale(img)
     showImage(gray_image)
+
+    hsv_image = convertBGRToHSV(img)
+    showImage(hsv_image)
 
     cv2.waitKey(0)
 
