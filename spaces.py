@@ -61,6 +61,14 @@ def convertHSVToBGR(img):
     return bgr_image
 
 
+def convertLABToBGR(img):
+    bgr_image = cv2.cvtColor(
+        src=img,
+        code=cv2.COLOR_LAB2BGR
+    )
+    return bgr_image
+
+
 def main():
     img = getImage()
     showImage(img)
@@ -80,6 +88,9 @@ def main():
     displayImageUsingRGBFormat(rgb_image)
 
     bgr_image = convertHSVToBGR(hsv_image)
+    showImage(bgr_image)
+
+    bgr_image = convertLABToBGR(lab_image)
     showImage(bgr_image)
 
     cv2.waitKey(0)
