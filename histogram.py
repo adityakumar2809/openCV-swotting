@@ -1,5 +1,5 @@
 import cv2
-import numpy as np
+import matplotlib.pyplot as plt
 
 
 image_index = 0
@@ -32,6 +32,17 @@ def calculateGrayHistogram(img):
         histSize=[256],
         ranges=[0, 256]
     )
+    return gray_histogram
+
+
+def showGrayHistogram(gray_histogram):
+    plt.figure()
+    plt.title('Grayscale Histogram')
+    plt.xlabel('Bins')
+    plt.ylabel('# of pixels')
+    plt.plot(gray_histogram)
+    plt.xlim([0, 256])
+    plt.show()
 
 
 def main():
@@ -42,6 +53,7 @@ def main():
     showImage(gray_image)
 
     gray_histogram = calculateGrayHistogram(gray_image)
+    showGrayHistogram(gray_histogram)
 
     cv2.waitKey(0)
 
