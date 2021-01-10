@@ -85,6 +85,22 @@ def showGrayHistogram(gray_histogram):
     plt.show()
 
 
+def calculateColorHistogram(img):
+    colors = ('b', 'g', 'r')
+    color_histogram = []
+    for i, color in enumerate(colors):
+        color_histogram.append(
+            cv2.calcHist(
+                images=[img],
+                channels=[i],
+                mask=None,
+                histSize=[256],
+                ranges=[0, 256]
+            )
+        )
+    return color_histogram
+
+
 def main():
     img = getImage()
     showImage(img)
@@ -106,6 +122,8 @@ def main():
         circle_mask
     )
     showGrayHistogram(gray_mask_histogram)
+
+    color_histogram = calculateColorHistogram(img)
 
     cv2.waitKey(0)
 
