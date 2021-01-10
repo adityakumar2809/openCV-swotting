@@ -35,6 +35,15 @@ def getCircleMask(img, mask):
     return circle_mask
 
 
+def getMaskedImage(img, mask):
+    masked_image = cv2.bitwise_and(
+        src1=img,
+        src2=img,
+        mask=mask
+    )
+    return masked_image
+
+
 def main():
     img = getImage()
     showImage(img)
@@ -44,6 +53,9 @@ def main():
 
     circle_mask = getCircleMask(img, mask)
     showImage(circle_mask)
+
+    masked_image = getMaskedImage(img, mask)
+    showImage(masked_image)
 
     cv2.waitKey(0)
 
