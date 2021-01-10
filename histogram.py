@@ -1,4 +1,5 @@
 import cv2
+import numpy as np
 import matplotlib.pyplot as plt
 
 
@@ -14,6 +15,14 @@ def showImage(img):
     global image_index
     cv2.imshow(f'Image#{image_index}', img)
     image_index += 1
+
+
+def getMask(img):
+    mask = np.zeros(
+        shape=img.shape[:2],
+        dtype='uint8'
+    )
+    return mask
 
 
 def convertBGRToGrayscale(img):
