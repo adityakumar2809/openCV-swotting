@@ -15,9 +15,20 @@ def showImage(img):
     image_index += 1
 
 
+def blurUsingAveraging(img):
+    average_blur_image = cv2.blur(
+        src=img,
+        ksize=(3, 3)
+    )
+    return average_blur_image
+
+
 def main():
     img = getImage()
     showImage(img)
+
+    average_blur_image = blurUsingAveraging(img)
+    showImage(average_blur_image)
 
     cv2.waitKey(0)
 
