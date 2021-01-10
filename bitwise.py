@@ -24,7 +24,7 @@ def drawRectangle(img):
         img=img,
         pt1=(30, 30),
         pt2=(370, 370),
-        color=(255, 0, 0),
+        color=255,
         thickness=3
     )
     return rectangle
