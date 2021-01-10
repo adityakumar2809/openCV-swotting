@@ -24,12 +24,24 @@ def convertBGRToGrayscale(img):
     return gray_image
 
 
+def calculateGrayHistogram(img):
+    gray_histogram = cv2.calcHist(
+        images=[img],
+        channels=[0],
+        mask=None,
+        histSize=[256],
+        ranges=[0, 256]
+    )
+
+
 def main():
     img = getImage()
     showImage(img)
 
     gray_image = convertBGRToGrayscale(img)
     showImage(gray_image)
+
+    gray_histogram = calculateGrayHistogram(gray_image)
 
     cv2.waitKey(0)
 
