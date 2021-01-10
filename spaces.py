@@ -45,6 +45,14 @@ def displayImageUsingRGBFormat(img):
     plt.show()
 
 
+def convertBGRToRGB(img):
+    rgb_image = cv2.cvtColor(
+        src=img,
+        code=cv2.COLOR_BGR2RGB
+    )
+    return rgb_image
+
+
 def main():
     img = getImage()
     showImage(img)
@@ -59,6 +67,9 @@ def main():
     showImage(lab_image)
 
     displayImageUsingRGBFormat(img)
+
+    rgb_image = convertBGRToRGB(img)
+    displayImageUsingRGBFormat(rgb_image)
 
     cv2.waitKey(0)
 
