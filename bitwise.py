@@ -30,12 +30,26 @@ def drawRectangle(img):
     return rectangle
 
 
+def drawCircle(img):
+    circle = cv2.circle(
+        img=img,
+        center=(200, 200),
+        radius=200,
+        color=255,
+        thickness=-1
+    )
+    return circle
+
+
 def main():
     blank = getBlank()
     showImage(blank)
 
     rectangle = drawRectangle(blank.copy())
     showImage(rectangle)
+
+    circle = drawCircle(blank.copy())
+    showImage(circle)
 
     cv2.waitKey(0)
 
