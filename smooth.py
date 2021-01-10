@@ -40,6 +40,16 @@ def blurUsingMedian(img):
     return median_blur_image
 
 
+def blurUsingBilateralMethod(img):
+    bilateral_blur_image = cv2.bilateralFilter(
+        src=img,
+        d=3,
+        sigmaColor=15,
+        sigmaSpace=15
+    )
+    return bilateral_blur_image
+
+
 def main():
     img = getImage()
     showImage(img)
@@ -50,8 +60,11 @@ def main():
     gaussian_blur_image = blurUsingGaussianMethod(img)
     showImage(gaussian_blur_image)
 
-    median_blur_image = blurUsingGaussianMethod(img)
+    median_blur_image = blurUsingMedian(img)
     showImage(median_blur_image)
+
+    bilateral_blur_image = blurUsingBilateralMethod(img)
+    showImage(bilateral_blur_image)
 
     cv2.waitKey(0)
 
