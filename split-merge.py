@@ -16,7 +16,7 @@ def showImage(img):
 
 
 def main():
-    pass
+    cv2.waitKey(0)
 
 
 if __name__ == "__main__":
