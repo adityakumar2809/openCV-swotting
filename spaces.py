@@ -31,6 +31,14 @@ def convertBGRToHSV(img):
     return hsv_image
 
 
+def convertBGRToLAB(img):
+    lab_image = cv2.cvtColor(
+        src=img,
+        code=cv2.COLOR_BGR2LAB
+    )
+    return lab_image
+
+
 def main():
     img = getImage()
     showImage(img)
@@ -40,6 +48,9 @@ def main():
 
     hsv_image = convertBGRToHSV(img)
     showImage(hsv_image)
+
+    lab_image = convertBGRToLAB(img)
+    showImage(lab_image)
 
     cv2.waitKey(0)
 
