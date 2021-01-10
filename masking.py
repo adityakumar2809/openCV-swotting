@@ -24,12 +24,26 @@ def getMask(img):
     return mask
 
 
+def getCircleMask(img, mask):
+    circle_mask = cv2.circle(
+        img=mask,
+        center=(img.shape[1]//2, img.shape[0]//2),
+        radius=70,
+        color=255,
+        thickness=-1
+    )
+    return circle_mask
+
+
 def main():
     img = getImage()
     showImage(img)
 
     mask = getMask(img)
     showImage(mask)
+
+    circle_mask = getCircleMask(img, mask)
+    showImage(circle_mask)
 
     cv2.waitKey(0)
 
