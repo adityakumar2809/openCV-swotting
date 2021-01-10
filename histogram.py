@@ -101,6 +101,22 @@ def calculateColorHistogram(img):
     return color_histogram
 
 
+def calculateColorMaskedHistogram(img, mask):
+    colors = ('b', 'g', 'r')
+    color_histogram = []
+    for i, color in enumerate(colors):
+        color_histogram.append(
+            cv2.calcHist(
+                images=[img],
+                channels=[i],
+                mask=mask,
+                histSize=[256],
+                ranges=[0, 256]
+            )
+        )
+    return color_histogram
+
+
 def showColorHistogram(color_histogram):
     colors = ('b', 'g', 'r')
     plt.figure()
@@ -127,16 +143,25 @@ def main():
     showImage(mask)
     circle_mask = getCircleMask(gray_image, mask)
     showImage(circle_mask)
-    masked_image = getMaskedImage(gray_image, circle_mask)
+
+    gray_masked_image = getMaskedImage(gray_image, circle_mask)
     showImage(masked_image)
     gray_mask_histogram = calculateGrayMaskedHistogram(
-        masked_image,
+        gray_masked_image,
         circle_mask
     )
     showGrayHistogram(gray_mask_histogram)
 
     color_histogram = calculateColorHistogram(img)
     showColorHistogram(color_histogram)
+
+    color_masked_image = getMaskedImage(img, circle_mask)
+    showImage(color_masked_image)
+    color_mask_histogram = calculateColorMaskedHistogram(
+        color_masked_image,
+        circle_mask
+    )
+    showColorHistogram(color_mask_histogram)
 
     cv2.waitKey(0)
 
