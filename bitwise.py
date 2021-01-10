@@ -49,6 +49,14 @@ def bitwiseAnd(img1, img2):
     return bitwise_and_image
 
 
+def bitwiseOr(img1, img2):
+    bitwise_or_image = cv2.bitwise_or(
+        src1=img1,
+        src2=img2
+    )
+    return bitwise_or_image
+
+
 def main():
     blank = getBlank()
     showImage(blank)
@@ -61,6 +69,9 @@ def main():
 
     bitwise_and_image = bitwiseAnd(rectangle, circle)
     showImage(bitwise_and_image)
+
+    bitwise_or_image = bitwiseOr(rectangle, circle)
+    showImage(bitwise_or_image)
 
     cv2.waitKey(0)
 
