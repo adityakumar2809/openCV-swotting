@@ -15,6 +15,7 @@ def showImage(img):
     cv2.imshow(f'Image#{image_index}', img)
     image_index += 1
 
+
 def getTwoDimBlank(img):
     blank = np.zeros(
         shape=img.shape[:2],
@@ -48,6 +49,14 @@ def main():
 
     merged_image = mergeColors(b, g, r)
     showImage(merged_image)
+
+    blank = getTwoDimBlank(img)
+    blue_image = mergeColors(b, blank, blank)
+    green_image = mergeColors(blank, g, blank)
+    red_image = mergeColors(blank, blank, r)
+    showImage(blue_image)
+    showImage(green_image)
+    showImage(red_image)
 
     cv2.waitKey(0)
 
