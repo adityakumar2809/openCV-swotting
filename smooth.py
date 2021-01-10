@@ -32,6 +32,14 @@ def blurUsingGaussianMethod(img):
     return gaussian_blur_image
 
 
+def blurUsingMedian(img):
+    median_blur_image = cv2.medianBlur(
+        src=img,
+        ksize=3
+    )
+    return median_blur_image
+
+
 def main():
     img = getImage()
     showImage(img)
@@ -41,6 +49,9 @@ def main():
 
     gaussian_blur_image = blurUsingGaussianMethod(img)
     showImage(gaussian_blur_image)
+
+    median_blur_image = blurUsingGaussianMethod(img)
+    showImage(median_blur_image)
 
     cv2.waitKey(0)
 
