@@ -65,6 +65,13 @@ def bitwiseXor(img1, img2):
     return bitwise_xor_image
 
 
+def bitwiseNot(img):
+    bitwise_not_image = cv2.bitwise_not(
+        src=img
+    )
+    return bitwise_not_image
+
+
 def main():
     blank = getBlank()
     showImage(blank)
@@ -83,6 +90,9 @@ def main():
 
     bitwise_xor_image = bitwiseXor(rectangle, circle)
     showImage(bitwise_xor_image)
+
+    bitwise_not_image = bitwiseNot(rectangle)
+    showImage(bitwise_not_image)
 
     cv2.waitKey(0)
 
