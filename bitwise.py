@@ -37,6 +37,8 @@ def main():
     rectangle = drawRectangle(blank.copy())
     showImage(rectangle)
 
+    cv2.waitKey(0)
+
 
 if __name__ == "__main__":
     main()
