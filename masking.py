@@ -28,6 +28,9 @@ def main():
     img = getImage()
     showImage(img)
 
+    mask = getMask(img)
+    showImage(mask)
+
     cv2.waitKey(0)
 
 
