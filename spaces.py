@@ -25,6 +25,8 @@ def main():
     gray_image = convertBGRToGrayscale(img)
     showImage(gray_image)
 
+    cv2.waitKey(0)
+
 
 if __name__ == "__main__":
     main()
