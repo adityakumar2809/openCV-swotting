@@ -145,7 +145,7 @@ def main():
     showImage(circle_mask)
 
     gray_masked_image = getMaskedImage(gray_image, circle_mask)
-    showImage(masked_image)
+    showImage(gray_masked_image)
     gray_mask_histogram = calculateGrayMaskedHistogram(
         gray_masked_image,
         circle_mask
