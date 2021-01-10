@@ -101,6 +101,18 @@ def calculateColorHistogram(img):
     return color_histogram
 
 
+def showColorHistogram(color_histogram):
+    colors = ('b', 'g', 'r')
+    plt.figure()
+    plt.title('Color Histogram')
+    plt.xlabel('Bins')
+    plt.ylabel('# of pixels')
+    for i, color in enumerate(colors):
+        plt.plot(color_histogram[i], color=color)
+    plt.xlim([0, 256])
+    plt.show()
+
+
 def main():
     img = getImage()
     showImage(img)
@@ -124,6 +136,7 @@ def main():
     showGrayHistogram(gray_mask_histogram)
 
     color_histogram = calculateColorHistogram(img)
+    showColorHistogram(color_histogram)
 
     cv2.waitKey(0)
 
