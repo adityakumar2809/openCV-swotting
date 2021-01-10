@@ -1,4 +1,5 @@
 import cv2
+import matplotlib.pyplot as plt
 
 
 image_index = 0
@@ -39,6 +40,11 @@ def convertBGRToLAB(img):
     return lab_image
 
 
+def displayImageUsingRGBFormat(img):
+    plt.imshow(img)
+    plt.show()
+
+
 def main():
     img = getImage()
     showImage(img)
@@ -51,6 +57,8 @@ def main():
 
     lab_image = convertBGRToLAB(img)
     showImage(lab_image)
+
+    displayImageUsingRGBFormat(img)
 
     cv2.waitKey(0)
 
