@@ -53,6 +53,14 @@ def convertBGRToRGB(img):
     return rgb_image
 
 
+def convertHSVToBGR(img):
+    bgr_image = cv2.cvtColor(
+        src=img,
+        code=cv2.COLOR_HSV2BGR
+    )
+    return bgr_image
+
+
 def main():
     img = getImage()
     showImage(img)
@@ -70,6 +78,9 @@ def main():
 
     rgb_image = convertBGRToRGB(img)
     displayImageUsingRGBFormat(rgb_image)
+
+    bgr_image = convertHSVToBGR(hsv_image)
+    showImage(bgr_image)
 
     cv2.waitKey(0)
 
