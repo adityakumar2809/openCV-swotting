@@ -15,6 +15,13 @@ def showImage(img):
     cv2.imshow(f'Image#{image_index}', img)
     image_index += 1
 
+def getTwoDimBlank(img):
+    blank = np.zeros(
+        shape=img.shape[:2],
+        dtype='uint8'
+    )
+    return blank
+
 
 def splitColors(img):
     b, g, r = cv2.split(
