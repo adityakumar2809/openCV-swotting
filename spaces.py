@@ -6,8 +6,24 @@ def getImage():
     return img
 
 
+def showImage(img):
+    cv2.imshow('Image', img)
+
+
+def convertBGRToGrayscale(img):
+    gray_image = cv2.cvtColor(
+        src=img,
+        code=cv2.COLOR_BGR2GRAY
+    )
+    return gray_image
+
+
 def main():
-    pass
+    img = getImage()
+    showImage(img)
+
+    gray_image = convertBGRToGrayscale(img)
+    showImage(gray_image)
 
 
 if __name__ == "__main__":
