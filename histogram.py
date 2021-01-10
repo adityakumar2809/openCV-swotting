@@ -55,6 +55,17 @@ def calculateGrayHistogram(img):
     return gray_histogram
 
 
+def calculateGrayMaskedHistogram(img, mask):
+    gray_histogram = cv2.calcHist(
+        images=[img],
+        channels=[0],
+        mask=mask,
+        histSize=[256],
+        ranges=[0, 256]
+    )
+    return gray_histogram
+
+
 def showGrayHistogram(gray_histogram):
     plt.figure()
     plt.title('Grayscale Histogram')
@@ -74,6 +85,16 @@ def main():
 
     gray_histogram = calculateGrayHistogram(gray_image)
     showGrayHistogram(gray_histogram)
+
+    mask = getMask(gray_image)
+    showImage(mask)
+    circular_mask = getCircleMask(gray_image, mask)
+    showImage(circular_mask)
+    gray_mask_histogram = calculateGrayMaskedHistogram(
+        gray_image,
+        circular_mask
+    )
+    showGrayHistogram(gray_mask_histogram)
 
     cv2.waitKey(0)
 
