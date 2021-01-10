@@ -23,12 +23,24 @@ def blurUsingAveraging(img):
     return average_blur_image
 
 
+def blurUsingGaussianMethod(img):
+    gaussian_blur_image = cv2.GaussianBlur(
+        src=img,
+        ksize=(3, 3),
+        sigmaX=0
+    )
+    return gaussian_blur_image
+
+
 def main():
     img = getImage()
     showImage(img)
 
     average_blur_image = blurUsingAveraging(img)
     showImage(average_blur_image)
+
+    gaussian_blur_image = blurUsingGaussianMethod(img)
+    showImage(gaussian_blur_image)
 
     cv2.waitKey(0)
 
