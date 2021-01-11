@@ -43,6 +43,18 @@ def getSimpleInverseThreshold(img, threshold_value):
     return threshold, inverse_threshold_image
 
 
+def getAdaptiveThreshold(img):
+    adaptive_threshold_image = cv2.adaptiveThreshold(
+        src=img,
+        maxValue=255,
+        adaptiveMethod=cv2.ADAPTIVE_THRESH_MEAN_C,
+        thresholdType=cv2.THRESH_BINARY,
+        blockSize=11,
+        C=3
+    )
+    return adaptive_threshold_image
+
+
 def main():
     img = getImage()
     showImage(img)
@@ -62,6 +74,9 @@ def main():
             150
         )
     showImage(simple_inverse_threshold_image)
+
+    adaptive_threshold_image = getAdaptiveThreshold(gray_image)
+    showImage(adaptive_threshold_image)
 
     cv2.waitKey(0)
 
