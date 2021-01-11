@@ -49,6 +49,14 @@ def getSobelGradient(img):
     return sobel_x, sobel_y
 
 
+def bitwiseOr(img1, img2):
+    bitwise_or_image = cv2.bitwise_or(
+        src1=img1,
+        src2=img2
+    )
+    return bitwise_or_image
+
+
 def main():
     img = getImage()
     showImage(img)
@@ -62,6 +70,9 @@ def main():
     sobel_x_image, sobel_y_image = getSobelGradient(gray_image)
     showImage(sobel_x_image)
     showImage(sobel_y_image)
+
+    sobel_combined_image = bitwiseOr(sobel_x_image, sobel_y_image)
+    showImage(sobel_combined_image)
 
     cv2.waitKey(0)
 
