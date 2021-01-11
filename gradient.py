@@ -33,6 +33,22 @@ def getLaplacianGradient(img):
     return lap
 
 
+def getSobelGradient(img):
+    sobel_x = cv2.Sobel(
+        src=img,
+        ddepth=cv2.CV_64F,
+        dx=1,
+        dy=0
+    )
+    sobel_y = cv2.Sobel(
+        src=img,
+        ddepth=cv2.CV_64F,
+        dx=0,
+        dy=1
+    )
+    return sobel_x, sobel_y
+
+
 def main():
     img = getImage()
     showImage(img)
@@ -42,6 +58,10 @@ def main():
 
     lap_image = getLaplacianGradient(gray_image)
     showImage(lap_image)
+
+    sobel_x_image, sobel_y_image = getSobelGradient(gray_image)
+    showImage(sobel_x_image)
+    showImage(sobel_y_image)
 
     cv2.waitKey(0)
 
