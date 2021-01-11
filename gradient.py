@@ -1,4 +1,5 @@
 import cv2
+import numpy as np
 
 
 image_index = 0
@@ -23,12 +24,24 @@ def getGrayScaleImage(img):
     return gray_image
 
 
+def getLaplacianGradient(img):
+    lap = cv2.Laplacian(
+        src=img,
+        ddepth=cv2.CV_64F
+    )
+    lap = np.uint8(np.absolute(lap))
+    return lap
+
+
 def main():
     img = getImage()
     showImage(img)
 
     gray_image = getGrayScaleImage(img)
     showImage(gray_image)
+
+    lap_image = getLaplacianGradient(gray_image)
+    showImage(lap_image)
 
     cv2.waitKey(0)
 
