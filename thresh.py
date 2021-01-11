@@ -67,6 +67,18 @@ def getInverseAdaptiveThreshold(img):
     return inverse_adaptive_threshold_image
 
 
+def getGaussianAdaptiveThreshold(img):
+    gaussian_adaptive_threshold_image = cv2.adaptiveThreshold(
+        src=img,
+        maxValue=255,
+        adaptiveMethod=cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
+        thresholdType=cv2.THRESH_BINARY,
+        blockSize=11,
+        C=3
+    )
+    return gaussian_adaptive_threshold_image
+
+
 def main():
     img = getImage()
     showImage(img)
@@ -92,6 +104,11 @@ def main():
 
     inverse_adaptive_threshold_image = getInverseAdaptiveThreshold(gray_image)
     showImage(inverse_adaptive_threshold_image)
+
+    gaussian_adaptive_threshold_image = getGaussianAdaptiveThreshold(
+        gray_image
+    )
+    showImage(gaussian_adaptive_threshold_image)
 
     cv2.waitKey(0)
 
