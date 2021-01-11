@@ -33,6 +33,16 @@ def getSimpleThreshold(img, threshold_value):
     return threshold, threshold_image
 
 
+def getSimpleInverseThreshold(img, threshold_value):
+    threshold, inverse_threshold_image = cv2.threshold(
+        src=img,
+        thresh=threshold_value,
+        maxval=255,
+        type=cv2.THRESH_BINARY_INV
+    )
+    return threshold, inverse_threshold_image
+
+
 def main():
     img = getImage()
     showImage(img)
@@ -45,6 +55,13 @@ def main():
         150
     )
     showImage(simple_threshold_image)
+
+    simple_inverse_threshold, simple_inverse_threshold_image =\
+        getSimpleInverseThreshold(
+            gray_image,
+            150
+        )
+    showImage(simple_inverse_threshold_image)
 
     cv2.waitKey(0)
 
