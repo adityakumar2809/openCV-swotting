@@ -23,12 +23,28 @@ def getGrayScaleImage(img):
     return gray_image
 
 
+def getSimpleThreshold(img, threshold_value):
+    threshold, threshold_image = cv2.threshold(
+        src=img,
+        thresh=threshold_value,
+        maxval=255,
+        type=cv2.THRESH_BINARY
+    )
+    return threshold, threshold_image
+
+
 def main():
     img = getImage()
     showImage(img)
 
     gray_image = getGrayScaleImage(img)
     showImage(gray_image)
+
+    simple_threshold, simple_threshold_image = getSimpleThreshold(
+        gray_image,
+        150
+    )
+    showImage(simple_threshold_image)
 
     cv2.waitKey(0)
 
