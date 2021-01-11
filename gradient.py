@@ -14,6 +14,7 @@ def showImage(img):
     cv2.imshow(f'Image#{image_index}', img)
     image_index += 1
 
+
 def main():
     img = getImage()
     showImage(img)
